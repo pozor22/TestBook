@@ -18,12 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from book import views
+from user import views as viewsuser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/deletebook/<int:pk>', views.DeleteBookView.as_view()),
     path('api/updatebook/<int:pk>', views.UpdateBookView.as_view()),
+    path('api/createuser/', viewsuser.CreateUserBookView.as_view()),
     # path('api/createbooks', views.CreateBookView.as_view()),
 ]
 
