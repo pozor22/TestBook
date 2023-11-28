@@ -22,6 +22,8 @@ from book import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('api/deletebook/<int:pk>', views.DeleteBookView.as_view()),
+    path('api/updatebook/<int:pk>', views.UpdateBookView.as_view()),
     # path('api/createbooks', views.CreateBookView.as_view()),
 ]
 
