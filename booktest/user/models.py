@@ -1,4 +1,5 @@
 from django.db import models
+from celery_app import send_mail
 
 
 class UserBook(models.Model):
@@ -8,3 +9,9 @@ class UserBook(models.Model):
 
     def __str__(self):
         return f'{self.username}'
+
+    def save(self, *args, **kwargs):
+        send_mail.delay(self.username, self.mail)
+
+        return super().save(*args, **kwargs)
+
